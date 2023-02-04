@@ -1,15 +1,21 @@
+import { Replace } from 'src/hepler/replace';
 import { NotificationContent } from './notification-content';
 
 export interface NotificationProps {
   recipientId: string;
   content: NotificationContent;
   category: string;
-  readAt: Date | null;
+  readAt?: Date | null;
   createdAt: Date;
 }
 
 export class Notification {
-  constructor(private props: NotificationProps) {}
+  constructor(private props: Replace<NotificationProps, { createdAt?: Date }>) {
+    this.props = {
+      ...props,
+      createdAt: props.createdAt ?? new Date(),
+    };
+  }
 
   public set recipientId(recipientId: string) {
     this.props.recipientId = recipientId;
