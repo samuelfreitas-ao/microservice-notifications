@@ -7,4 +7,8 @@ describe('Notification Content', () => {
     );
     expect(content).toBeTruthy();
   });
+
+  it('should not be able to create a notification content with less than 5 characters', () => {
+    expect(() => new NotificationContent('error')).toThrow();
+  });
 });
