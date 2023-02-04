@@ -1,3 +1,4 @@
+import { randomUUID } from 'node:crypto';
 import { Replace } from 'src/helper/replace';
 import { NotificationContent } from './notification-content';
 
@@ -10,11 +11,18 @@ export interface NotificationProps {
 }
 
 export class Notification {
+  private _id: string;
+
   constructor(private props: Replace<NotificationProps, { createdAt?: Date }>) {
+    this._id = randomUUID();
     this.props = {
       ...props,
       createdAt: props.createdAt ?? new Date(),
     };
+  }
+
+  public get id() {
+    return this._id;
   }
 
   public set recipientId(recipientId: string) {
