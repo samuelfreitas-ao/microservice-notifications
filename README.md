@@ -1,4 +1,4 @@
-Um microserviço de notificações
+Este projecto é um microserviço de notificações que pode ser integrado a qualquer projecto que precisa de gerir as notifições na aplicação.
 
 ## Tecnologias
 
